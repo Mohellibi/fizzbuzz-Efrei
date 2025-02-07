@@ -1,0 +1,19 @@
+name: Test_fizzbuzz_avec_docker
+
+on:
+  push:
+
+jobs:
+  run-tests:
+    name: Run Tests in Docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  
+
+      - name: Build Docker image
+        run: docker build -t devops .
+
+      - name: Run tests in Docker
+        run: docker run devops
